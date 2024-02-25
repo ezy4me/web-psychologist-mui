@@ -9,13 +9,14 @@ const Drawer = styled(MuiDrawer, {
   "& .MuiDrawer-paper": {
     position: "relative",
     whiteSpace: "nowrap",
-    border: "none",
+    borderRight: '1px solid #d7f2ff',
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     boxSizing: "border-box",
+    backgroundColor: "#ffffff",
     ...(!open && {
       overflowX: "hidden",
       transition: theme.transitions.create("width", {
@@ -29,7 +30,5 @@ const Drawer = styled(MuiDrawer, {
     }),
   },
 }));
-
-
 
 export default Drawer;

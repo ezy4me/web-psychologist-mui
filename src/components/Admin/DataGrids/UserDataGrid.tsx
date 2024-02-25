@@ -1,5 +1,3 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Stack, Typography } from "@mui/material";
 
@@ -15,9 +13,9 @@ const columns: GridColDef[] = [
     field: "role",
     headerName: "Роль",
     width: 150,
-    editable: true,
+    editable: false,
     valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.role.name || ''}`,
+      `${params.row.role?.name || ''}`,
   },
 ];
 
