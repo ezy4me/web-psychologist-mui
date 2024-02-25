@@ -5,6 +5,10 @@ interface SectionTitleProps {
 }
 
 const SectionTitle = ({ text }: SectionTitleProps) => {
+  const words = text.split(' ');
+  const firstWord = words[0];
+  const secondWord = words[1];
+
   return (
     <Stack
       height={"100%"}
@@ -12,8 +16,10 @@ const SectionTitle = ({ text }: SectionTitleProps) => {
       spacing={4}
       alignItems={"center"}
       justifyContent={"center"}>
-      <Typography textTransform={"uppercase"} variant="h4">
-        {text}
+      <Typography textTransform={"uppercase"} fontWeight={'600'} variant="h4">
+        {firstWord}{' '}
+        <span style={{ color: '#4BA8FF' }}>{secondWord}</span>{' '}
+        {words.slice(2).join(' ')}
       </Typography>
     </Stack>
   );

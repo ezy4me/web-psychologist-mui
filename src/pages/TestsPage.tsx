@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -12,6 +11,7 @@ import {
 } from "@mui/material";
 import useTestStore from "../store/testStore";
 import { useEffect } from "react";
+import SectionTitle from "@components/SectionTitlle";
 
 const TestsPage = () => {
   const { tests, getTests } = useTestStore((state) => ({
@@ -29,24 +29,15 @@ const TestsPage = () => {
 
   return (
     <Container>
-      <Stack
-        height={"100%"}
-        direction={"column"}
-        spacing={4}
-        alignItems={"center"}
-        justifyContent={"center"}>
-        <Typography textTransform={"uppercase"} variant="h4">
-          Зачем проводить <span>психологические</span> тесты ?
-        </Typography>
-        <Typography variant="body1">
-          Психологические тесты являются важным инструментом для изучения и
-          понимания различных аспектов человеческой психики, поведения и
-          личности. Они позволяют психологам и исследователям получить
-          информацию о личностных особенностях, эмоциональном состоянии,
-          склонностях и предпочтениях человека. Вот несколько причин, почему
-          психологические тесты имеют важное значение:
-        </Typography>
-      </Stack>
+      <SectionTitle text="Зачем проводить психологические тесты ?" />
+      <Typography variant="body1" mt={2}>
+        Психологические тесты являются важным инструментом для изучения и
+        понимания различных аспектов человеческой психики, поведения и личности.
+        Они позволяют психологам и исследователям получить информацию о
+        личностных особенностях, эмоциональном состоянии, склонностях и
+        предпочтениях человека. Вот несколько причин, почему психологические
+        тесты имеют важное значение:
+      </Typography>
       <Grid marginTop={4} container spacing={1}>
         {tests?.map((test, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>

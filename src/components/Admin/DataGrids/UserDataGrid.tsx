@@ -6,7 +6,7 @@ const columns: GridColDef[] = [
   {
     field: "email",
     headerName: "Почта",
-    width: 150,
+    width: 300,
     editable: true,
   },
   {

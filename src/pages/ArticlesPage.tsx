@@ -12,6 +12,7 @@ import {
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useArticleStore from "../store/articleStore";
+import SectionTitle from "@components/SectionTitlle";
 
 const ArticlesPage = () => {
   const navigate = useNavigate();
@@ -34,16 +35,7 @@ const ArticlesPage = () => {
 
   return (
     <Container>
-      <Stack
-        height={"100%"}
-        direction={"column"}
-        spacing={4}
-        alignItems={"center"}
-        justifyContent={"center"}>
-        <Typography textTransform={"uppercase"} variant="h4">
-          Последние статьи
-        </Typography>
-      </Stack>
+      <SectionTitle text="Последние статьи" />
       <Grid marginTop={4} container spacing={1}>
         {articles?.map((article, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
