@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "request": "Наладить гармоничные отношения с близкими людьми",
+      "imageUrl": "/public/svg/home-page-1.svg"
+    },
+    {
+      "request": "Справиться со стрессом, тревогой и страхом",
+      "imageUrl": "/public/svg/home-page-2.svg"
+    },
+    {
+      "request": "Принять себя и повысить самооценку",
+      "imageUrl": "/public/svg/home-page-3.svg"
+    },
+    {
+      "request": "Научиться говорить «нет» и отстаивать личные границы",
+      "imageUrl": "/public/svg/home-page-4.svg"
+    },
+    {
+      "request": "Пережить перемены: переезд, расставание, потеря работы",
+      "imageUrl": "/public/svg/home-page-5.svg"
+    },
+    {
+      "request": "Понять, почему на работе проблемы и нет мотивации",
+      "imageUrl": "/public/svg/home-page-6.svg"
+    }
+  ]
+}
