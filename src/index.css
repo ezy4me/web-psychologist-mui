@@ -33,6 +33,10 @@ a {
   padding: 0 !important;
 }
 
+.swal2-container {
+  z-index: 1400;
+}
+
 .swal2-container,
 .swal2-center,
 .swal2-backdrop-show {

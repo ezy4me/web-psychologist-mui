@@ -24,9 +24,10 @@ const AuthForm = ({ closeModal }: AuthFormProps) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { accessToken, onLogin } = useAuthStore((state) => ({
+  const { accessToken, onLogin, user } = useAuthStore((state) => ({
     onLogin: state.onLogin,
     accessToken: state.accessToken,
+    user: state.user,
   }));
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +39,9 @@ const AuthForm = ({ closeModal }: AuthFormProps) => {
   };
 
   useEffect(() => {
-    if (accessToken) navigate("/profile");
+    if (accessToken) {
+      user.role.name === "ADMIN" ? navigate("/admin") : navigate("/profile");
+    }
   }, [accessToken]);
 
   const handleLogin = async () => {

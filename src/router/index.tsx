@@ -1,4 +1,5 @@
 import {
+  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,6 +15,12 @@ import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import ProfilePage from "../pages/ProfilePage";
 import ArticleDetailPage from "../pages/ArticleDetailPage";
 import AdminPage from "../pages/Admin/AdminPage";
+import useAuthStore from "../store/authStore";
+
+const AuthGuard = ({ element }: { element: React.ReactNode }) => {
+  const { accessToken } = useAuthStore();
+  return accessToken ? element : <Navigate to="/" replace />;
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,9 +33,12 @@ const router = createBrowserRouter(
       <Route path="/articles/:id" element={<ArticleDetailPage />} />
 
       <Route path="/privacy" element={<PrivacyPolicyPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route
+        path="/profile"
+        element={<AuthGuard element={<ProfilePage />} />}
+      />
 
-      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/admin" element={<AuthGuard element={<AdminPage />} />} />
 
       <Route path="/*" element={<NotFoundPage />} />
     </Route>

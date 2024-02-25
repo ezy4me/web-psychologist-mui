@@ -3,6 +3,8 @@ import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import styled from "styled-components";
+import useAuthStore from "./store/authStore";
+import { useEffect, useState } from "react";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -17,16 +19,38 @@ const Content = styled.div`
 `;
 
 const App = () => {
+  const { user } = useAuthStore();
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isPsychologist, setIsPsychologist] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkRole = () => {
+      if (user?.role) {
+        if (user.role?.name! === "ADMIN") {
+          setIsAdmin(true);
+        } else if (user.role?.name === "PSYCHOLOGIST") {
+          setIsPsychologist(true);
+        }
+      }
+    };
+    checkRole();
+  }, [user]);
   return (
     <>
       <ScrollToTop />
-      {/* <Header />
-      <Wrapper>
-        <Content> */}
-          <Outlet />
-        {/* </Content>
-      </Wrapper> */}
-      {/* <Footer /> */}
+      {!isAdmin ? (
+        <>
+          <Header />
+          <Wrapper>
+            <Content>
+              <Outlet />
+            </Content>
+          </Wrapper>
+          <Footer />
+        </>
+      ) : (
+        <Outlet />
+      )}
     </>
   );
 };
