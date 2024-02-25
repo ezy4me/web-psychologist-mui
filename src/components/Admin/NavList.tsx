@@ -1,72 +1,63 @@
-import * as React from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import React from "react";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PeopleIcon from "@mui/icons-material/People";
+import QuizIcon from "@mui/icons-material/Quiz";
+import ArticleIcon from "@mui/icons-material/Article";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Link } from "react-router-dom";
+import useAuthStore from "@store/authStore";
 
-export const mainNavLinks = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-);
+interface NavLinkProps {
+  to: string;
+  icon: React.ReactNode;
+  primary: string;
+}
 
-export const secondaryNavLinks = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
+const MainNavLinks = () => {
+  return (
+    <>
+      <NavLink to="/admin/" icon={<DashboardIcon />} primary="Главная" />
+      <NavLink
+        to="/admin/psychologists"
+        icon={<PsychologyIcon />}
+        primary="Психологи"
+      />
+      <NavLink to="/admin/users" icon={<PeopleIcon />} primary="Пользователи" />
+      <NavLink to="/admin/articles" icon={<ArticleIcon />} primary="Статьи" />
+      <NavLink to="/admin/tests" icon={<QuizIcon />} primary="Тесты" />
+    </>
+  );
+};
+
+const SecondaryNavLinks = () => {
+  const { onLogout } = useAuthStore();
+
+  const handleLogout = () => {
+    onLogout();
+  };
+
+  return (
+    <ListItemButton
+      onClick={handleLogout}>
       <ListItemIcon>
-        <AssignmentIcon />
+        <ExitToAppIcon color="error"/>
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Выход" />
     </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+  );
+};
+
+const NavLink = ({ to, icon, primary }: NavLinkProps) => {
+  return (
+    <ListItemButton component={Link} to={to}>
+      <ListItemIcon>{icon}</ListItemIcon>
+      <ListItemText primary={primary} />
     </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-);
+  );
+};
+
+export { MainNavLinks, SecondaryNavLinks };

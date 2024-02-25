@@ -25,16 +25,20 @@ const App = () => {
 
   useEffect(() => {
     const checkRole = () => {
-      if (user?.role) {
-        if (user.role?.name! === "ADMIN") {
+      if (user?.role?.name) {
+        if (user.role.name === "ADMIN") {
           setIsAdmin(true);
-        } else if (user.role?.name === "PSYCHOLOGIST") {
+        } else if (user.role.name === "PSYCHOLOGIST") {
           setIsPsychologist(true);
         }
+      } else {
+        setIsAdmin(false);
+        setIsPsychologist(false);
       }
     };
     checkRole();
   }, [user]);
+
   return (
     <>
       <ScrollToTop />

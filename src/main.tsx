@@ -6,13 +6,16 @@ import { RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { blue, indigo } from "@mui/material/colors";
 import router from "./router";
-
-const theme = createTheme({
-  palette: {
-    primary: blue,
-    secondary: indigo,
+import { ruRU } from "@mui/x-data-grid";
+const theme = createTheme(
+  {
+    palette: {
+      primary: blue,
+      secondary: indigo,
+    },
   },
-});
+  ruRU
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

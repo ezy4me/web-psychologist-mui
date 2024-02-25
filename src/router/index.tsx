@@ -16,6 +16,11 @@ import ProfilePage from "../pages/ProfilePage";
 import ArticleDetailPage from "../pages/ArticleDetailPage";
 import AdminPage from "../pages/Admin/AdminPage";
 import useAuthStore from "../store/authStore";
+import AnalyticsPage from "@pages/Admin/AnalitycsPage";
+import UserPage from "@pages/Admin/UserPage";
+import PsychologistPage from "@pages/Admin/PsychologistPage";
+import ArticlePage from "@pages/Admin/ArticlePage";
+import TestPage from "@pages/Admin/TestPage";
 
 const AuthGuard = ({ element }: { element: React.ReactNode }) => {
   const { accessToken } = useAuthStore();
@@ -38,7 +43,28 @@ const router = createBrowserRouter(
         element={<AuthGuard element={<ProfilePage />} />}
       />
 
-      <Route path="/admin" element={<AuthGuard element={<AdminPage />} />} />
+      <Route path="/admin" element={<AuthGuard element={<AdminPage />} />}>
+        <Route
+          path="/admin/"
+          element={<AuthGuard element={<AnalyticsPage />} />}
+        />
+        <Route
+          path="/admin/users"
+          element={<AuthGuard element={<UserPage />} />}
+        />
+        <Route
+          path="/admin/psychologists"
+          element={<AuthGuard element={<PsychologistPage />} />}
+        />
+        <Route
+          path="/admin/articles"
+          element={<AuthGuard element={<ArticlePage />} />}
+        />
+        <Route
+          path="/admin/tests"
+          element={<AuthGuard element={<TestPage />} />}
+        />
+      </Route>
 
       <Route path="/*" element={<NotFoundPage />} />
     </Route>
