@@ -1,11 +1,9 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { data } from "../../data/QandA.json";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Container,
   Stack,
   Typography,
 } from "@mui/material";

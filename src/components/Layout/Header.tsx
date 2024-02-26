@@ -42,7 +42,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar elevation={0} position="static">
       <Container sx={{ py: 1 }}>
         <Toolbar style={{padding: 0}}>
           <Grid container justifyContent="space-between" alignItems="center">

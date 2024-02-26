@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import SectionTitle from "@components/SectionTitlle";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import { FaBrain, FaHouseUser, FaRegHandshake, FaBook } from "react-icons/fa6";
 
 const TestsPage = () => {
   const { tests, getTests } = useTestStore((state) => ({
@@ -45,10 +46,76 @@ const TestsPage = () => {
           склонностях и предпочтениях человека. Вот несколько причин, почему
           психологические тесты имеют важное значение:
         </Typography>
-        <Grid marginTop={4} container spacing={1}>
+        <Grid container spacing={2}>
+          <Grid xs={12} sm={6} md={3}>
+            <Card elevation={0}>
+              <CardContent>
+                <Stack
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  spacing={2}>
+                  <FaHouseUser color="#4ba8ff" size={64} />
+                  <Typography textAlign={"center"} variant="h6">
+                    Оценка личностных характеристик
+                  </Typography>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid xs={12} sm={6} md={3}>
+            <Card elevation={0}> 
+              <CardContent>
+                <Stack
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  spacing={2}>
+                  <FaBrain color="#4ba8ff" size={64} />
+                  <Typography textAlign={"center"} variant="h6">
+                    Диагностика психологических состояний
+                  </Typography>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid xs={12} sm={6} md={3}>
+            <Card elevation={0}>
+              <CardContent>
+                <Stack
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  spacing={2}>
+                  <FaBook color="#4ba8ff" size={64} />
+                  <Typography textAlign={"center"} variant="h6">
+                    Профессиональная ориентация
+                  </Typography>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid xs={12} sm={6} md={3}>
+            <Card elevation={0}>
+              <CardContent>
+                <Stack
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  spacing={2}>
+                  <FaRegHandshake color="#4ba8ff" size={64} />
+                  <Typography textAlign={"center"} variant="h6">
+                    Развитие отношений
+                  </Typography>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid marginTop={4} container spacing={2}>
           {tests?.map((test, index) => (
-            <Grid xs={12} sm={6} md={4} lg={3} key={index}>
-              <Card sx={{ maxWidth: 345, cursor: "pointer", height: '100%' }}>
+            <Grid xs={12} sm={6} md={4} key={index}>
+              <Card sx={{ cursor: "pointer", height: "100%" }}>
                 <CardMedia
                   sx={{ height: 180 }}
                   image={test.image}

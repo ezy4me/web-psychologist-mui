@@ -9,7 +9,7 @@ const PageImageWrapper = styled("div")<PageImageProps>(({ $image }) => ({
   backgroundImage: `url("${$image}")`,
   backgroundSize: "cover",
   backgroundPosition: "center",
-  height: "320px",
+  height: "400px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

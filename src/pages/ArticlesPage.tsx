@@ -42,12 +42,12 @@ const ArticlesPage = () => {
       </Breadcrumbs>
       <Stack direction={"column"} spacing={4} mt={4}>
         <SectionTitle text="Последние статьи" />
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
           {articles?.map((article, index) => (
-            <Grid xs={12} sm={6} md={4} lg={3} key={index}>
+            <Grid xs={12} sm={6} md={4} key={index}>
               <Card
                 onClick={() => handleOpenArticleDetail(article.id)}
-                sx={{ maxWidth: 345, cursor: "pointer", height: "100%" }}>
+                sx={{ cursor: "pointer", height: "100%" }}>
                 <CardMedia
                   sx={{ height: 180 }}
                   image={article.image}

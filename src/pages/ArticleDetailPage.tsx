@@ -11,7 +11,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { styled } from "@mui/system";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useArticleStore from "../store/articleStore";
@@ -43,27 +42,40 @@ const ArticleDetailPage = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <Card sx={{ maxWidth: 345, cursor: "pointer" }}>
-          <CardMedia
-            sx={{ height: 180 }}
-            image={article.image}
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {article.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {article.subtitle}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Stack direction={"row"} spacing={2} alignItems={"center"}>
-              <Avatar src={article.psychologist.user.profile.image} />
-              <Typography>{article.psychologist.user.profile.name}</Typography>
-            </Stack>
-          </CardActions>
-        </Card>
+        <Stack direction={"column"} spacing={4} mt={4}>
+          <Card elevation={0}>
+            <CardMedia
+              sx={{ height: 400 }}
+              image={article.image}
+              title="green iguana"
+            />
+            <CardContent>
+              <Stack
+                direction={"row"}
+                spacing={4}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Typography gutterBottom variant="h4" component="div">
+                  {article.title}
+                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Avatar src={article.psychologist.user.profile.image} />
+                  <Typography>
+                    {article.psychologist.user.profile.name}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardContent>
+              <Stack direction={"column"} spacing={4} alignItems={"flex-start"}>
+                <Typography variant="body1" color="text.secondary">
+                  {article.subtitle}
+                </Typography>
+              </Stack>
+            </CardContent>
+            <CardActions></CardActions>
+          </Card>
+        </Stack>
       )}
     </Container>
   );
