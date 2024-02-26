@@ -65,7 +65,7 @@ const Header = () => {
               <Link to={"/articles"} style={{ textDecoration: "none" }}>
                 <Button color="inherit">Статьи</Button>
               </Link>
-              <Link to={"/"} style={{ textDecoration: "none" }}>
+              <Link to={"/for-psychologist"} style={{ textDecoration: "none" }}>
                 <Button color="inherit">Для психологов</Button>
               </Link>
               <Link to={"/about"} style={{ textDecoration: "none" }}>
