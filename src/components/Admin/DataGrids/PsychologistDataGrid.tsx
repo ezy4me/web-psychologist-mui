@@ -6,7 +6,7 @@ const columns: GridColDef[] = [
   {
     field: "user.email",
     headerName: "Почта",
-    width: 150,
+    width: 250,
     editable: true,
     valueGetter: (params: GridValueGetterParams) =>
       `${params.row.user?.email!}`,

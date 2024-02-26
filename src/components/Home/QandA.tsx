@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { data } from "../../src/data/QandA.json";
+import { data } from "../../data/QandA.json";
 import {
   Accordion,
   AccordionDetails,

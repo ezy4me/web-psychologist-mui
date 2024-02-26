@@ -66,16 +66,17 @@ const AdminPage = () => {
             alignItems: "center",
             justifyContent: "flex-end",
             px: [1],
+            bgcolor: "#2196F3",
           }}>
-          <IconButton onClick={toggleDrawer}>
-            <ChevronLeftIcon />
+          <IconButton color="inherit"  onClick={toggleDrawer}>
+            <ChevronLeftIcon/>
           </IconButton>
         </Toolbar>
-        <Divider />
-        <List component="nav">
-          <MainNavLinks/>
+        <List
+          component="nav">
+          <MainNavLinks />
           <Divider sx={{ my: 1 }} />
-          <SecondaryNavLinks/>
+          <SecondaryNavLinks />
         </List>
       </Drawer>
       <Box
@@ -83,7 +84,7 @@ const AdminPage = () => {
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === "light"
-              ? "#f7fcff"
+              ? "#fafafa"
               : theme.palette.grey[900],
           flexGrow: 1,
           height: "100vh",

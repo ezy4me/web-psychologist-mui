@@ -16,7 +16,7 @@ const SectionTitle = ({ text }: SectionTitleProps) => {
       spacing={4}
       alignItems={"center"}
       justifyContent={"center"}>
-      <Typography textTransform={"uppercase"} fontWeight={'600'} variant="h4">
+      <Typography textTransform={"uppercase"} fontWeight={'700'} variant="h4">
         {firstWord}{' '}
         <span style={{ color: '#4BA8FF' }}>{secondWord}</span>{' '}
         {words.slice(2).join(' ')}

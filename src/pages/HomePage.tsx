@@ -1,17 +1,20 @@
 import {
+  Avatar,
+  Breadcrumbs,
   Card,
   CardContent,
-  CardMedia,
   Container,
   Stack,
   Typography,
 } from "@mui/material";
 import TypingEffect from "../components/TypingEffect";
-import QAndA from "../components/QandA";
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import QAndA from "../components/Home/QandA";
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { data } from "../data/HomePsychologist.json";
 import PageImage from "../components/PageImage";
 import SectionTitle from "../components/SectionTitlle";
+import { Link } from "react-router-dom";
+import PsychologistSelection from "@components/Home/PsychologistSelection";
 
 type DataType = {
   request: string;
@@ -21,7 +24,11 @@ type DataType = {
 const HomePage = () => {
   return (
     <Container>
-      <Stack direction={"column"} spacing={4}>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link to={"/"}>Главная</Link>
+      </Breadcrumbs>
+
+      <Stack direction={"column"} spacing={4} mt={4}>
         <PageImage $image="/public/images/main.jpg">
           <TypingEffect
             text="Добро пожаловать"
@@ -40,12 +47,16 @@ const HomePage = () => {
           {data.map((item: DataType, index: number) => (
             <Grid xs={2} sm={4} md={4} key={index}>
               <Card sx={{ height: "100%" }} elevation={0}>
-                <CardMedia
-                  style={{ borderRadius: "100%", marginTop: 16}}
-                  height="320"
-                  component="img"
-                  image={item.imageUrl}
-                />
+                <Stack
+                  direction={"row"}
+                  alignItems={"center"}
+                  justifyContent={"center"}>
+                  <Avatar
+                    sx={{ width: 128, height: 128, marginBottom: 2 }}
+                    src={item.imageUrl}
+                    alt={item.imageUrl}
+                  />
+                </Stack>
                 <CardContent>
                   <Typography textAlign={"center"} variant="h6">
                     {item.request}
@@ -56,8 +67,12 @@ const HomePage = () => {
           ))}
         </Grid>
 
+        <SectionTitle text="Как мы отбираем психологов ?" />
+        <PsychologistSelection />
+
         <SectionTitle text="Часто задаваемые вопросы" />
         <QAndA />
+
       </Stack>
     </Container>
   );

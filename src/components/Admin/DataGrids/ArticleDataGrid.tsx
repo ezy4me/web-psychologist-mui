@@ -53,6 +53,9 @@ const ArticleDataGrid = ({ data }: any) => {
       <Typography variant="h5">Статьи</Typography>
       <DataGrid
         rows={data}
+        onCellClick={(cell) => {
+          console.log(cell.row);
+        }}
         columns={columns}
         initialState={{
           pagination: {
