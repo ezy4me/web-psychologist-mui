@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import useProfileStore from "../store/profileStore";
 import useAuthStore from "../store/authStore";
 import {
@@ -11,9 +11,12 @@ import {
   Stack,
   CardMedia,
   Breadcrumbs,
+  colors,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Grid from "@mui/material/Unstable_Grid2";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -32,7 +35,7 @@ const ProfilePage = () => {
   );
 
   const [name, setName] = useState<string>("");
-  const [birthday, setBirthday] = useState<string>("");
+  const [birthday, setBirthday] = useState<string | Date>("");
   const [gender, setGender] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -55,11 +58,35 @@ const ProfilePage = () => {
     }
   }, [user]);
 
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleBirthdayChange = (date: string | null | Date) => {
+    if (date instanceof Date) {
+      setBirthday(date);
+    } else if (date) {
+      setBirthday(dayjs(date).toDate());
+    }
+  };
+
+  const handleGenderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setGender(e.target.value);
+  };
+
+  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
+
   const handleSaveProfile = async () => {
     await updateUserProfile({
       id: profile?.id,
       name,
-      birthday,
+      birthday: birthday?.toLocaleString() || "",
       gender,
       phone,
       description,
@@ -98,28 +125,28 @@ const ProfilePage = () => {
                     variant="standard"
                     label="Имя"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handleNameChange}
                     fullWidth
                   />
-                  <TextField
-                    variant="standard"
+                  <DatePicker
                     label="Дата рождения"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                    fullWidth
+                    shouldRespectLeadingZeros
+                    //@ts-ignore
+                    value={dayjs(birthday)}
+                    onChange={handleBirthdayChange}
                   />
                   <TextField
                     variant="standard"
                     label="Пол"
                     value={gender}
-                    onChange={(e) => setGender(e.target.value)}
+                    onChange={handleGenderChange}
                     fullWidth
                   />
                   <TextField
                     variant="standard"
                     label="Телефон"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={handlePhoneChange}
                     fullWidth
                   />
                   <TextField
@@ -128,7 +155,7 @@ const ProfilePage = () => {
                     multiline
                     rows={4}
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={handleDescriptionChange}
                     fullWidth
                   />
                   <Button

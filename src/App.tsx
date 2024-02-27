@@ -5,7 +5,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import styled from "styled-components";
 import useAuthStore from "./store/authStore";
 import { useEffect, useState } from "react";
-
 const Wrapper = styled.div`
   min-height: 100vh;
   margin: 2rem auto;

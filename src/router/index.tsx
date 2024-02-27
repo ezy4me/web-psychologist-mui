@@ -22,6 +22,7 @@ import PsychologistPage from "@pages/Admin/PsychologistPage";
 import ArticlePage from "@pages/Admin/ArticlePage";
 import TestPage from "@pages/Admin/TestPage";
 import ForPsychologistPage from "@pages/ForPsychologistPage.tsx";
+import TestsPassingPage from "@pages/TestsPassingPage";
 
 const AuthGuard = ({ element }: { element: React.ReactNode }) => {
   const { accessToken } = useAuthStore();
@@ -33,7 +34,10 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
+
       <Route path="/tests" element={<TestsPage />} />
+      <Route path="/tests/:id" element={<TestsPassingPage />} />
+
       <Route path="/for-psychologist" element={<ForPsychologistPage />} />
 
       <Route path="/articles" element={<ArticlesPage />} />

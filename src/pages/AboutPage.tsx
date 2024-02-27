@@ -1,25 +1,39 @@
-import { Container, Typography } from "@mui/material";
-import { styled } from "@mui/system";
-
-const PageImage = styled("div")(({ theme }) => ({
-  backgroundImage: `url("/public/images/main.jpg")`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  height: "200px", 
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: theme.palette.common.white,
-}));
+import PageImage from "@components/PageImage";
+import {
+  Breadcrumbs,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   return (
     <Container>
-      <PageImage>
-        <Typography variant="h4" align="center" gutterBottom>
-          О нас
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link to={"/"}>Главная</Link>
+        <Link to={"/about"}>О нас</Link>
+      </Breadcrumbs>
+      <Stack direction={"column"} spacing={4} mt={4}>
+        <PageImage $image="/public/images/about.jpg">
+          <Paper
+            elevation={0}
+            sx={{
+              paddingRight: 4,
+              paddingLeft: 4,
+              width: "100%",
+              bgcolor: "#ffffffba",
+            }}>
+            <Typography textAlign={"center"} fontWeight={700} fontSize={40}>
+              О нас
+            </Typography>
+          </Paper>
+        </PageImage>
+        <Typography textAlign={"center"} fontWeight={700} fontSize={40}>
+          in dev progress...
         </Typography>
-      </PageImage>
+      </Stack>
     </Container>
   );
 };

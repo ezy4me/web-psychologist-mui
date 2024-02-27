@@ -12,11 +12,13 @@ import {
 import useTestStore from "../store/testStore";
 import { useEffect } from "react";
 import SectionTitle from "@components/SectionTitlle";
-import { Link } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import { Link, useNavigate } from "react-router-dom";
+import Grid from "@mui/material/Unstable_Grid2";
 import { FaBrain, FaHouseUser, FaRegHandshake, FaBook } from "react-icons/fa6";
 
 const TestsPage = () => {
+  const navigate = useNavigate();
+
   const { tests, getTests } = useTestStore((state) => ({
     tests: state.tests,
     getTests: state.getTests,
@@ -29,6 +31,10 @@ const TestsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleOpenTestPassing = (id: number) => {
+    navigate(`/tests/${id}`);
+  };
 
   return (
     <Container>
@@ -64,7 +70,7 @@ const TestsPage = () => {
             </Card>
           </Grid>
           <Grid xs={12} sm={6} md={3}>
-            <Card elevation={0}> 
+            <Card elevation={0}>
               <CardContent>
                 <Stack
                   direction={"column"}
@@ -115,7 +121,9 @@ const TestsPage = () => {
         <Grid marginTop={4} container spacing={2}>
           {tests?.map((test, index) => (
             <Grid xs={12} sm={6} md={4} key={index}>
-              <Card sx={{ cursor: "pointer", height: "100%" }}>
+              <Card
+                sx={{ cursor: "pointer", height: "100%" }}
+                onClick={() => handleOpenTestPassing(test.id)}>
                 <CardMedia
                   sx={{ height: 180 }}
                   image={test.image}

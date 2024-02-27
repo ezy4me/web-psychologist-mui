@@ -13,8 +13,10 @@ export const ProfileService = {
 
   async updateUserProfile(profile: any) {
     try {
+      const convertedProfile = { ...profile, birthday: new Date(profile.birthday) };
+
       const response = await authInstance.put(`profile/${profile.id}`, {
-        ...profile,
+        ...convertedProfile,
       });
 
       showNotification({
@@ -32,5 +34,6 @@ export const ProfileService = {
       });
       console.log(error);
     }
-  },
+  }
+
 };

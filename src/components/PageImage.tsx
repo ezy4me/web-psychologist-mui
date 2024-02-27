@@ -13,6 +13,7 @@ const PageImageWrapper = styled("div")<PageImageProps>(({ $image }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  borderRadius: 4
 }));
 
 const PageImageContent = styled("div")({
