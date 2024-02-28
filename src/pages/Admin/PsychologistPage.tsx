@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import usePsychologistStore from "@store/psychologistStore";
-import PsychologistDataGrid from "@components/Admin/DataGrids/PsychologistDataGrid";
+import { useEffect } from 'react';
+import usePsychologistStore from '@store/psychologistStore';
+import PsychologistDataGrid from '@components/Admin/DataGrids/PsychologistDataGrid';
 
 const PsychologistPage = () => {
   const { psychologists, getPsychologists } = usePsychologistStore((state) => ({
@@ -16,7 +16,7 @@ const PsychologistPage = () => {
   }, []);
   return (
     <>
-      <PsychologistDataGrid data={psychologists}/>
+      <PsychologistDataGrid data={psychologists} />
     </>
   );
 };

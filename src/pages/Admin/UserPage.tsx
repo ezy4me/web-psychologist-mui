@@ -1,6 +1,6 @@
-import useUserStore from "@store/userStore";
-import UserDataGrid from "@components/Admin/DataGrids/UserDataGrid";
-import { useEffect } from "react";
+import useUserStore from '@store/userStore';
+import UserDataGrid from '@components/Admin/DataGrids/UserDataGrid';
+import { useEffect } from 'react';
 
 const UserPage = () => {
   const { users, getUsers } = useUserStore((state) => ({
@@ -16,7 +16,7 @@ const UserPage = () => {
   }, []);
   return (
     <>
-      <UserDataGrid data={users}/>
+      <UserDataGrid data={users} />
     </>
   );
 };

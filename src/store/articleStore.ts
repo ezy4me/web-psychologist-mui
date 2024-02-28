@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { ArticleService } from "../services/articlesService";
+import { create } from 'zustand';
+import { ArticleService } from '../services/articlesService';
 
 type Article = {
   id: number;
@@ -38,7 +38,7 @@ const useArticleStore = create<ArticleState & ArticleActions>((set) => ({
       const data = await ArticleService.getArticles();
       set({ articles: data });
     } catch (error) {
-      console.error("Error fetching articles data:", error);
+      console.error('Error fetching articles data:', error);
     }
   },
   getOneArticle: async (id) => {
@@ -46,7 +46,7 @@ const useArticleStore = create<ArticleState & ArticleActions>((set) => ({
       const data = await ArticleService.getOneArticle(id);
       set({ article: data });
     } catch (error) {
-      console.error("Error fetching articles data:", error);
+      console.error('Error fetching articles data:', error);
     }
   },
 }));

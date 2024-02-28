@@ -1,6 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import useProfileStore from "../store/profileStore";
-import useAuthStore from "../store/authStore";
+import { ChangeEvent, useEffect, useState } from 'react';
+import useProfileStore from '../../store/profileStore';
+import useAuthStore from '../../store/authStore';
 import {
   Container,
   Typography,
@@ -11,12 +11,11 @@ import {
   Stack,
   CardMedia,
   Breadcrumbs,
-  colors,
-} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs from "dayjs";
+} from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import Grid from '@mui/material/Unstable_Grid2';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -26,29 +25,27 @@ const ProfilePage = () => {
     onLogout: state.onLogout,
   }));
 
-  const { profile, getUserProfile, updateUserProfile } = useProfileStore(
-    (state) => ({
-      getUserProfile: state.getUserProfile,
-      updateUserProfile: state.updateUserProfile,
-      profile: state.profile,
-    })
-  );
+  const { profile, getUserProfile, updateUserProfile } = useProfileStore((state) => ({
+    getUserProfile: state.getUserProfile,
+    updateUserProfile: state.updateUserProfile,
+    profile: state.profile,
+  }));
 
-  const [name, setName] = useState<string>("");
-  const [birthday, setBirthday] = useState<string | Date>("");
-  const [gender, setGender] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [image, setImage] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [birthday, setBirthday] = useState<string | Date>('');
+  const [gender, setGender] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [image, setImage] = useState<string>('');
 
   useEffect(() => {
     if (profile) {
-      setName(profile.name || "");
-      setBirthday(profile.birthday || "");
-      setGender(profile.gender || "");
-      setPhone(profile.phone || "");
-      setImage(profile.image || "");
-      setDescription(profile.description || "");
+      setName(profile.name || '');
+      setBirthday(profile.birthday || '');
+      setGender(profile.gender || '');
+      setPhone(profile.phone || '');
+      setImage(profile.image || '');
+      setDescription(profile.description || '');
     }
   }, [profile]);
 
@@ -66,7 +63,7 @@ const ProfilePage = () => {
     if (date instanceof Date) {
       setBirthday(date);
     } else if (date) {
-      setBirthday(dayjs(date).toDate());
+      setBirthday(dayjs(date).toDate().toISOString());
     }
   };
 
@@ -86,7 +83,7 @@ const ProfilePage = () => {
     await updateUserProfile({
       id: profile?.id,
       name,
-      birthday: birthday?.toLocaleString() || "",
+      birthday: birthday?.toLocaleString() || '',
       gender,
       phone,
       description,
@@ -95,7 +92,7 @@ const ProfilePage = () => {
 
   const onHandleLogout = async () => {
     await onLogout().then(() => {
-      navigate("/");
+      navigate('/');
       location.reload();
     });
   };
@@ -103,10 +100,10 @@ const ProfilePage = () => {
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to={"/"}>Главная</Link>
-        <Link to={"/profile"}>Личный кабинет</Link>
+        <Link to={'/'}>Главная</Link>
+        <Link to={'/profile'}>Личный кабинет</Link>
       </Breadcrumbs>
-      <Stack direction={"column"} spacing={4} mt={4}>
+      <Stack direction={'column'} spacing={4} mt={4}>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h4">Ваш профиль</Typography>
           <Button variant="contained" color="error" onClick={onHandleLogout}>
@@ -119,7 +116,7 @@ const ProfilePage = () => {
             <Card>
               <CardMedia component="img" alt="Profile Image" src={image} />
               <CardContent>
-                <Stack direction={"column"} spacing={2}>
+                <Stack direction={'column'} spacing={2}>
                   <Typography variant="h6">Личные данные</Typography>
                   <TextField
                     variant="standard"
@@ -158,10 +155,7 @@ const ProfilePage = () => {
                     onChange={handleDescriptionChange}
                     fullWidth
                   />
-                  <Button
-                    onClick={handleSaveProfile}
-                    variant="contained"
-                    color="primary">
+                  <Button onClick={handleSaveProfile} variant="contained" color="primary">
                     Сохранить
                   </Button>
                 </Stack>
@@ -169,7 +163,7 @@ const ProfilePage = () => {
             </Card>
           </Grid>
           <Grid xs={12} sm={6}>
-            <Stack direction={"column"} spacing={2}>
+            <Stack direction={'column'} spacing={2}>
               <Card>
                 <CardContent>
                   <Typography variant="h6">Ваши записи</Typography>

@@ -1,22 +1,14 @@
-import { useState, ChangeEvent } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  TextField,
-  Button,
-  MenuItem,
-  Stack,
-} from "@mui/material";
-import useAuthStore from "../../store/authStore";
+import { useState, ChangeEvent } from 'react';
+import { Card, CardContent, Typography, TextField, Button, MenuItem, Stack } from '@mui/material';
+import useAuthStore from '@store/authStore';
 
 interface RegFormProps {
   closeModal?: () => void;
 }
 
 const RegForm = ({ closeModal }: RegFormProps) => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [roleId, setRoleId] = useState<number>(0);
 
   const { onRegister } = useAuthStore((state) => ({
@@ -70,7 +62,8 @@ const RegForm = ({ closeModal }: RegFormProps) => {
             label="Кто вы?"
             value={roleId}
             onChange={handleRoleIdChange}
-            fullWidth>
+            fullWidth
+          >
             <MenuItem value={2}>Пациент</MenuItem>
             <MenuItem value={3}>Психолог</MenuItem>
           </TextField>

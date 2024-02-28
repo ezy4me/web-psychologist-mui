@@ -1,6 +1,6 @@
-import useTestStore from "@store/testStore";
-import TestDataGrid from "@components/Admin/DataGrids/TestDataGrid";
-import { useEffect } from "react";
+import useTestStore from '@store/testStore';
+import TestDataGrid from '@components/Admin/DataGrids/TestDataGrid';
+import { useEffect } from 'react';
 
 const TestPage = () => {
   const { tests, getTests } = useTestStore((state) => ({
@@ -16,7 +16,7 @@ const TestPage = () => {
   }, []);
   return (
     <>
-      <TestDataGrid data={tests}/>
+      <TestDataGrid data={tests} />
     </>
   );
 };

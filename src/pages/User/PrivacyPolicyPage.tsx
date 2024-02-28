@@ -1,14 +1,14 @@
-import { Container, Typography } from "@mui/material";
-import { styled } from "@mui/system";
+import { Container, Typography } from '@mui/material';
+import { styled } from '@mui/system';
 
-const PageImage = styled("div")(({ theme }) => ({
+const PageImage = styled('div')(({ theme }) => ({
   backgroundImage: `url("/public/images/main.jpg")`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  height: "200px", 
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '200px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   color: theme.palette.common.white,
 }));
 

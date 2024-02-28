@@ -1,18 +1,7 @@
-import { useState, ChangeEvent, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  TextField,
-  Button,
-  CardHeader,
-  Avatar,
-  Stack,
-  Box,
-} from "@mui/material";
-import useAuthStore from "../../store/authStore";
-import { useNavigate } from "react-router-dom";
-import { red } from "@mui/material/colors";
+import { useState, ChangeEvent, useEffect } from 'react';
+import { Card, CardContent, Typography, TextField, Button, Stack } from '@mui/material';
+import useAuthStore from '@store/authStore';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthFormProps {
   closeModal?: () => void;
@@ -21,14 +10,14 @@ interface AuthFormProps {
 const AuthForm = ({ closeModal }: AuthFormProps) => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
   const { accessToken, onLogin, user } = useAuthStore((state) => ({
     onLogin: state.onLogin,
     accessToken: state.accessToken,
     user: state.user,
   }));
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -38,22 +27,22 @@ const AuthForm = ({ closeModal }: AuthFormProps) => {
     setPassword(e.target.value);
   };
 
-  useEffect(() => {
-    if (accessToken) {
-      user.role.name === "ADMIN" ? navigate("/admin") : navigate("/profile");
-    }
-  }, [accessToken]);
-
   const handleLogin = async () => {
     await onLogin(email, password).then(() => {
       if (closeModal) closeModal();
     });
   };
 
+  useEffect(() => {
+    if (accessToken) {
+      user.role.name === 'ADMIN' ? navigate('/admin') : navigate('/profile');
+    }
+  }, [accessToken]);
+
   return (
     <Card sx={{ width: 320, boxShadow: 0, padding: 2 }}>
       <CardContent>
-        <Stack alignItems={"center"} spacing={4}>
+        <Stack alignItems={'center'} spacing={4}>
           <Typography variant="h5">Авторизация</Typography>
           <TextField
             variant="standard"

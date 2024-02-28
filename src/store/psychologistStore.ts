@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { PsychologistService } from "../services/psychologistService";
+import { create } from 'zustand';
+import { PsychologistService } from '../services/psychologistService';
 
 interface Psychologist {
   id: number;
@@ -34,7 +34,7 @@ const usePsychologistStore = create<PsychologistState & PsychologistActions>((se
       const data = await PsychologistService.getPsychologists();
       set({ psychologists: data });
     } catch (error) {
-      console.error("Error fetching psychologists data:", error);
+      console.error('Error fetching psychologists data:', error);
     }
   },
 }));

@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
 import {
-  Box,
   Breadcrumbs,
   Button,
   Card,
   CardActions,
   CardContent,
-  CircularProgress,
   Container,
   FormControl,
   FormControlLabel,
@@ -16,10 +15,12 @@ import {
   RadioGroup,
   Stack,
   Typography,
-} from "@mui/material";
-import SectionTitle from "@components/SectionTitlle";
-import useTestStore from "../store/testStore";
-import { Answer, TestQuestion } from "@/types";
+} from '@mui/material';
+
+import SectionTitle from '@components/SectionTitlle';
+import useTestStore from '@store/testStore';
+import { Answer, TestQuestion } from '@/types';
+import { showNotification } from '@utils/notification';
 
 export interface SelectedAnswers {
   [key: number]: string;
@@ -29,19 +30,15 @@ const TestsPassingPage = () => {
   const { id } = useParams<{ id: string }>();
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>({});
   const [totalScore, setTotalScore] = useState<number>(0);
-  const {
-    result,
-    testQuestions,
-    getTestQuestions,
-    getTestingResult,
-    clearResult,
-  } = useTestStore((state) => ({
-    result: state.result,
-    testQuestions: state.testQuestions,
-    getTestQuestions: state.getTestQuestions,
-    getTestingResult: state.getTestingResult,
-    clearResult: state.clearResult,
-  }));
+  const { result, testQuestions, getTestQuestions, getTestingResult, clearResult } = useTestStore(
+    (state) => ({
+      result: state.result,
+      testQuestions: state.testQuestions,
+      getTestQuestions: state.getTestQuestions,
+      getTestingResult: state.getTestingResult,
+      clearResult: state.clearResult,
+    }),
+  );
 
   useEffect(() => {
     if (id) {
@@ -52,17 +49,13 @@ const TestsPassingPage = () => {
 
   const getTestTitle = () => {
     if (testQuestions.length > 0) {
-      const title = testQuestions[0]?.test?.title || "";
+      const title = testQuestions[0]?.test?.title || '';
       return title.trim();
     }
-    return "";
+    return '';
   };
 
-  const handleAnswerChange = (
-    questionIndex: number,
-    selectedAnswer: string,
-    score: number
-  ) => {
+  const handleAnswerChange = (questionIndex: number, selectedAnswer: string, score: number) => {
     setSelectedAnswers({
       ...selectedAnswers,
       [questionIndex]: selectedAnswer,
@@ -72,25 +65,27 @@ const TestsPassingPage = () => {
   };
 
   const handleSendAnswers = async () => {
-    const isAnyAnswerSelected = Object.values(selectedAnswers).some(
-      (answer) => !!answer
-    );
+    const isAnyAnswerSelected = Object.values(selectedAnswers).some((answer) => !!answer);
 
     if (!isAnyAnswerSelected) {
-      alert("Выберите хотя бы один ответ перед отправкой формы.");
+      showNotification({
+        title: 'Прохождение теста',
+        text: 'Необходимо выбрать вариант ответа',
+        icon: 'warning',
+      });
       return;
     }
 
-    const isEveryAnswerSelected = testQuestions.every(
-      (question, index) => !!selectedAnswers[index]
-    );
+    const isEveryAnswerSelected = testQuestions.every((_, index) => !!selectedAnswers[index]);
 
     if (!isEveryAnswerSelected) {
-      alert("Ответы на все вопросы должны быть выбраны перед отправкой формы.");
+      showNotification({
+        title: 'Прохождение теста',
+        text: 'Ответы на все вопросы должны быть выбраны перед отправкой формы',
+        icon: 'error',
+      });
       return;
     }
-
-    console.log(totalScore);
 
     if (id) {
       await getTestingResult(id, totalScore);
@@ -100,10 +95,10 @@ const TestsPassingPage = () => {
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to={"/"}>Главная</Link>
-        <Link to={"/tests"}>Тесты</Link>
+        <Link to={'/'}>Главная</Link>
+        <Link to={'/tests'}>Тесты</Link>
       </Breadcrumbs>
-      <Stack direction={"column"} spacing={4} mt={4}>
+      <Stack direction={'column'} spacing={4} mt={4}>
         <>
           <SectionTitle text={getTestTitle()} />
           {testQuestions.map((question: TestQuestion, index: number) => (
@@ -117,21 +112,20 @@ const TestsPassingPage = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <FormControl
-                  component="fieldset"
-                  error={!selectedAnswers[index]}>
+                <FormControl component="fieldset" error={!selectedAnswers[index]}>
                   <RadioGroup
                     aria-label={`answer-${index}`}
-                    value={selectedAnswers[index] || ""}
+                    value={selectedAnswers[index] || ''}
                     onChange={(e) =>
                       handleAnswerChange(
                         index,
                         e.target.value,
                         question.question.Answer.find(
-                          (a: Answer) => a.id.toString() === e.target.value
-                        )?.score || 0
+                          (a: Answer) => a.id.toString() === e.target.value,
+                        )?.score || 0,
                       )
-                    }>
+                    }
+                  >
                     {question.question.Answer?.map((a: Answer) => (
                       <FormControlLabel
                         key={a.id}
@@ -141,9 +135,7 @@ const TestsPassingPage = () => {
                       />
                     ))}
                   </RadioGroup>
-                  {!selectedAnswers[index] && (
-                    <FormHelperText>Выберите ответ</FormHelperText>
-                  )}
+                  {!selectedAnswers[index] && <FormHelperText>Выберите ответ</FormHelperText>}
                 </FormControl>
               </CardActions>
             </Card>

@@ -6,15 +6,18 @@ import {
   Container,
   Stack,
   Typography,
-} from "@mui/material";
-import TypingEffect from "../components/TypingEffect";
-import QAndA from "../components/Home/QandA";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
-import { data } from "../data/HomePsychologist.json";
-import PageImage from "../components/PageImage";
-import SectionTitle from "../components/SectionTitlle";
-import { Link } from "react-router-dom";
-import PsychologistSelection from "@components/Home/PsychologistSelection";
+} from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+
+import { Link } from 'react-router-dom';
+
+import TypingEffect from '@components/TypingEffect';
+import QAndA from '@components/Home/QandA';
+import PageImage from '@components/PageImage';
+import SectionTitle from '@components/SectionTitlle';
+import PsychologistSelection from '@components/Home/PsychologistSelection';
+
+import { data } from '@data/HomePsychologist.json';
 
 type DataType = {
   request: string;
@@ -25,10 +28,10 @@ const HomePage = () => {
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to={"/"}>Главная</Link>
+        <Link to={'/'}>Главная</Link>
       </Breadcrumbs>
 
-      <Stack direction={"column"} spacing={4} mt={4}>
+      <Stack direction={'column'} spacing={4} mt={4}>
         <PageImage $image="/public/images/main.jpg">
           <TypingEffect
             text="Добро пожаловать"
@@ -40,17 +43,11 @@ const HomePage = () => {
 
         <SectionTitle text="С чем поможет психолог ?" />
 
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {data.map((item: DataType, index: number) => (
             <Grid xs={2} sm={4} md={4} key={index}>
-              <Card sx={{ height: "100%" }} elevation={0}>
-                <Stack
-                  direction={"row"}
-                  alignItems={"center"}
-                  justifyContent={"center"}>
+              <Card sx={{ height: '100%' }} elevation={0}>
+                <Stack direction={'row'} alignItems={'center'} justifyContent={'center'}>
                   <Avatar
                     sx={{ width: 128, height: 128, marginBottom: 2 }}
                     src={item.imageUrl}
@@ -58,7 +55,7 @@ const HomePage = () => {
                   />
                 </Stack>
                 <CardContent>
-                  <Typography textAlign={"center"} variant="h6">
+                  <Typography textAlign={'center'} variant="h6">
                     {item.request}
                   </Typography>
                 </CardContent>
@@ -72,7 +69,6 @@ const HomePage = () => {
 
         <SectionTitle text="Часто задаваемые вопросы" />
         <QAndA />
-
       </Stack>
     </Container>
   );

@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { TestService } from "../services/testService";
-import { Test, TestQuestion } from "@/types";
+import { create } from 'zustand';
+import { TestService } from '../services/testService';
+import { Test, TestQuestion } from '@/types';
 
 type TestState = {
   tests: Array<Test>;
@@ -18,13 +18,13 @@ type TestActions = {
 const useTestStore = create<TestState & TestActions>((set) => ({
   tests: [],
   testQuestions: [],
-  result: "",
+  result: '',
   getTests: async () => {
     try {
       const data = await TestService.getTests();
       set({ tests: data });
     } catch (error) {
-      console.error("Error fetching tests data:", error);
+      console.error('Error fetching tests data:', error);
     }
   },
   getTestQuestions: async (testId) => {
@@ -32,7 +32,7 @@ const useTestStore = create<TestState & TestActions>((set) => ({
       const data = await TestService.getTestQuestions(testId);
       set({ testQuestions: data });
     } catch (error) {
-      console.error("Error fetching test questions data:", error);
+      console.error('Error fetching test questions data:', error);
     }
   },
   getTestingResult: async (testId, totalScore) => {
@@ -40,11 +40,11 @@ const useTestStore = create<TestState & TestActions>((set) => ({
       const data = await TestService.getTestingResult(testId, totalScore);
       set({ result: data?.text });
     } catch (error) {
-      console.error("Error fetching test questions data:", error);
+      console.error('Error fetching test questions data:', error);
     }
   },
   clearResult: () => {
-    set({ result: "" });
+    set({ result: '' });
   },
 }));
 

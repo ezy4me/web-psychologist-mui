@@ -1,9 +1,9 @@
-import { apiInstance, authInstance } from ".";
+import { apiInstance, authInstance } from '.';
 
 export const TestService = {
   async getTests() {
     try {
-      const response = await apiInstance.get("test");
+      const response = await apiInstance.get('test');
       return response.data;
     } catch (error) {
       console.log(error);
@@ -26,5 +26,5 @@ export const TestService = {
     } catch (error) {
       console.log(error);
     }
-}
+  },
 };

@@ -1,5 +1,5 @@
-import { ProfileService } from "./../services/profileService";
-import { create } from "zustand";
+import { ProfileService } from './../services/profileService';
+import { create } from 'zustand';
 
 type Profile = {
   id: number;
@@ -27,16 +27,16 @@ const getValueFromLocalStorage = (key: string) => {
 };
 
 const useProfileStore = create<ProfileState & ProfileActions>((set) => ({
-  profile: getValueFromLocalStorage("profile"),
+  profile: getValueFromLocalStorage('profile'),
   getUserProfile: async (userId) => {
     try {
       const data = await ProfileService.getUserProfile(userId);
 
-      localStorage.setItem("profile", JSON.stringify(data));
+      localStorage.setItem('profile', JSON.stringify(data));
 
       set({ profile: data });
     } catch (error) {
-      console.error("Error fetching profile data:", error);
+      console.error('Error fetching profile data:', error);
     }
   },
   updateUserProfile: async (profile) => {
@@ -44,7 +44,7 @@ const useProfileStore = create<ProfileState & ProfileActions>((set) => ({
       const data = await ProfileService.updateUserProfile(profile);
       set({ profile: data });
     } catch (error) {
-      console.error("Error to update profile data:", error);
+      console.error('Error to update profile data:', error);
     }
   },
 }));

@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getToken = async () => {
-  const value = await localStorage.getItem("token");
+  const value = await localStorage.getItem('token');
   return value ? JSON.parse(value) : false;
 };
 
@@ -13,7 +13,7 @@ const commonConfig = {
 const apiInstance = axios.create({
   ...commonConfig,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -29,14 +29,14 @@ apiInstance.interceptors.request.use(async (config) => {
 const authInstance = axios.create({
   ...commonConfig,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
 const formDataInstance = axios.create({
   ...commonConfig,
   headers: {
-    "Content-Type": "multipart/form-data",
+    'Content-Type': 'multipart/form-data',
   },
 });
 

@@ -1,5 +1,5 @@
-import { authInstance } from ".";
-import { showNotification } from "../utils/notification";
+import { authInstance } from '.';
+import { showNotification } from '../utils/notification';
 
 export const ProfileService = {
   async getUserProfile(userId: number) {
@@ -13,27 +13,37 @@ export const ProfileService = {
 
   async updateUserProfile(profile: any) {
     try {
-      const convertedProfile = { ...profile, birthday: new Date(profile.birthday) };
+
+      console.log(profile.birthday);
+      
+      if (typeof profile.birthday === 'string') {
+        const birthdayDate = new Date(profile.birthday);
+
+        if (!isNaN(birthdayDate.getTime())) {
+          profile.birthday = birthdayDate.toISOString();
+        } else {
+          throw new Error('Invalid date format for birthday');
+        }
+      }
 
       const response = await authInstance.put(`profile/${profile.id}`, {
-        ...convertedProfile,
+        ...profile,
       });
 
       showNotification({
-        title: "Обновление данных",
-        text: "Успешно",
-        icon: "success",
+        title: 'Обновление данных',
+        text: 'Успешно',
+        icon: 'success',
       });
 
       return response.data;
     } catch (error: any) {
       showNotification({
-        title: "Данные профиля",
-        text: `${error?.response?.data?.message || "Ошибка при изменении"}`,
-        icon: "error",
+        title: 'Данные профиля',
+        text: `${error?.response?.data?.message || 'Ошибка при изменении'}`,
+        icon: 'error',
       });
       console.log(error);
     }
-  }
-
+  },
 };

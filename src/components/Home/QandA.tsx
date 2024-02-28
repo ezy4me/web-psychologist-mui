@@ -1,13 +1,7 @@
-import styled from "styled-components";
-import { data } from "../../data/QandA.json";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Stack,
-  Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import styled from 'styled-components';
+import { data } from '@data/QandA.json';
+import { Accordion, AccordionDetails, AccordionSummary, Stack, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 type DataType = {
   question: string;
@@ -18,14 +12,14 @@ const QAndA = () => {
   return (
     <>
       {data.map(({ question, answer }: DataType, index: number) => (
-        <Accordion key={index} style={{ boxShadow: "inherit", position: 'inherit' }}>
-          <AccordionSummary style={{ padding: 0 }}  expandIcon={<ExpandMoreIcon />}>
-            <Stack direction={"row"} spacing={2} alignItems={"center"}>
+        <Accordion key={index} style={{ boxShadow: 'inherit', position: 'inherit' }}>
+          <AccordionSummary style={{ padding: 0 }} expandIcon={<ExpandMoreIcon />}>
+            <Stack direction={'row'} spacing={2} alignItems={'center'}>
               <QuestionNumber>{index + 1}</QuestionNumber>
-              <Typography fontWeight={"500"}>{question}</Typography>
+              <Typography fontWeight={'500'}>{question}</Typography>
             </Stack>
           </AccordionSummary>
-          <AccordionDetails >{answer}</AccordionDetails>
+          <AccordionDetails>{answer}</AccordionDetails>
         </Accordion>
       ))}
     </>

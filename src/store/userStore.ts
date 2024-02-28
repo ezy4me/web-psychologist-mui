@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { UserService } from "../services/userService";
+import { create } from 'zustand';
+import { UserService } from '../services/userService';
 
 type User = {
   id: number;
@@ -24,7 +24,7 @@ const useUserStore = create<UserState & UserActions>((set) => ({
       const data = await UserService.getUsers();
       set({ users: data });
     } catch (error) {
-      console.error("Error fetching users data:", error);
+      console.error('Error fetching users data:', error);
     }
   },
 }));

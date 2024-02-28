@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import { Container, Typography, Grid, Stack, Box, Avatar } from "@mui/material";
+import { Link } from 'react-router-dom';
+import { Container, Typography, Grid, Stack, Avatar } from '@mui/material';
 
 const Footer = () => {
   return (
     <FooterContainer>
       <Container>
-        <Stack direction={"row"} justifyContent={"space-between"} spacing={4}>
+        <Stack direction={'row'} justifyContent={'space-between'} spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <Stack spacing={2}>
               <MyLink to="/terms">Условия использования</MyLink>
@@ -22,14 +22,13 @@ const Footer = () => {
               <MyLink to="/blog">Блог</MyLink>
             </Stack>
           </Grid>
-          <Stack
-            spacing={2}
-            direction={"column"}
-            alignItems={"center"}
-            height={120}
-            width={120}>
-            <Avatar alt="footer_logo"  sx={{ width: 64, height: 64 }} src="/public/logo-monochrome.png" />
-            <Typography variant="subtitle2" textAlign={"center"}>
+          <Stack spacing={2} direction={'column'} alignItems={'center'} height={120} width={120}>
+            <Avatar
+              alt="footer_logo"
+              sx={{ width: 64, height: 64 }}
+              src="/public/logo-monochrome.png"
+            />
+            <Typography variant="subtitle2" textAlign={'center'}>
               &copy; 2024, MindCare
             </Typography>
           </Stack>
@@ -47,7 +46,7 @@ const MyLink = ({ to, children }: any) => (
   </Link>
 );
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
   width: 100%;
@@ -55,6 +54,5 @@ export const FooterContainer = styled.footer`
   background-color: #252525;
   color: #e0e0e0;
 `;
-
 
 export default Footer;

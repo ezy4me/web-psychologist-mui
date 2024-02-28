@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Container,
   IconButton,
@@ -8,14 +8,14 @@ import {
   Toolbar,
   Box,
   CssBaseline,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { MainNavLinks, SecondaryNavLinks } from "@components/Admin/NavList";
-import { Avatar, Stack } from "@mui/material";
-import Drawer from "@components/Admin/Drawer";
-import AppBar from "@components/Admin/AppBar";
-import { Outlet } from "react-router-dom";
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { MainNavLinks, SecondaryNavLinks } from '@components/Admin/NavList';
+import { Avatar, Stack } from '@mui/material';
+import Drawer from '@components/Admin/Drawer';
+import AppBar from '@components/Admin/AppBar';
+import { Outlet } from 'react-router-dom';
 
 const AdminPage = () => {
   const [open, setOpen] = React.useState(true);
@@ -24,37 +24,30 @@ const AdminPage = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar elevation={0} position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px",
-          }}>
+            pr: '24px',
+          }}
+        >
           <IconButton
             edge="start"
             color="inherit"
             aria-label="open drawer"
             onClick={toggleDrawer}
             sx={{
-              marginRight: "36px",
-              ...(open && { display: "none" }),
-            }}>
+              marginRight: '36px',
+              ...(open && { display: 'none' }),
+            }}
+          >
             <MenuIcon />
           </IconButton>
-          <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            <Avatar
-              alt="header_logo"
-              src="/public/logo.png"
-              sx={{ width: 40, height: 40 }}
-            />
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}>
-              MindCare
+          <Stack direction={'row'} alignItems={'center'} spacing={1}>
+            <Avatar alt="header_logo" src="/public/logo.png" sx={{ width: 40, height: 40 }} />
+            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+              MindCare --- Администратор
             </Typography>
           </Stack>
         </Toolbar>
@@ -62,18 +55,18 @@ const AdminPage = () => {
       <Drawer variant="permanent" open={open}>
         <Toolbar
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
             px: [1],
-            bgcolor: "#2196F3",
-          }}>
-          <IconButton color="inherit"  onClick={toggleDrawer}>
-            <ChevronLeftIcon/>
+            bgcolor: '#2196F3',
+          }}
+        >
+          <IconButton color="inherit" onClick={toggleDrawer}>
+            <ChevronLeftIcon />
           </IconButton>
         </Toolbar>
-        <List
-          component="nav">
+        <List component="nav">
           <MainNavLinks />
           <Divider sx={{ my: 1 }} />
           <SecondaryNavLinks />
@@ -83,13 +76,12 @@ const AdminPage = () => {
         component="main"
         sx={{
           backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? "#fafafa"
-              : theme.palette.grey[900],
+            theme.palette.mode === 'light' ? '#fafafa' : theme.palette.grey[900],
           flexGrow: 1,
-          height: "100vh",
-          overflow: "auto",
-        }}>
+          height: '100vh',
+          overflow: 'auto',
+        }}
+      >
         <Toolbar />
         <Container maxWidth={false} sx={{ mt: 4, mb: 4 }}>
           <Outlet />

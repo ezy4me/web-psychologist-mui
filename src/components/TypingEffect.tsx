@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 type PropsType = {
   text: string;
@@ -8,13 +8,8 @@ type PropsType = {
   pauseDelay: number;
 };
 
-const TypingEffect = ({
-  text,
-  typingDelay,
-  erasingDelay,
-  pauseDelay,
-}: PropsType) => {
-  const [displayText, setDisplayText] = useState("");
+const TypingEffect = ({ text, typingDelay, erasingDelay, pauseDelay }: PropsType) => {
+  const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
@@ -25,7 +20,7 @@ const TypingEffect = ({
       if (isTyping) {
         if (currentTextLength === text.length) {
           setIsTyping(false);
-          timeoutId = window.setTimeout(() => setDisplayText(""), pauseDelay);
+          timeoutId = window.setTimeout(() => setDisplayText(''), pauseDelay);
         } else {
           setDisplayText(text.substring(0, currentTextLength + 1));
           timeoutId = window.setTimeout(handleTyping, typingDelay);
@@ -33,7 +28,7 @@ const TypingEffect = ({
       } else {
         if (currentTextLength === 0) {
           setIsTyping(true);
-          timeoutId = window.setTimeout(() => setDisplayText(""), pauseDelay);
+          timeoutId = window.setTimeout(() => setDisplayText(''), pauseDelay);
         } else {
           setDisplayText(text.substring(0, currentTextLength - 1));
           timeoutId = window.setTimeout(handleTyping, erasingDelay);
@@ -41,10 +36,7 @@ const TypingEffect = ({
       }
     };
 
-    timeoutId = window.setTimeout(
-      handleTyping,
-      isTyping ? typingDelay : erasingDelay
-    );
+    timeoutId = window.setTimeout(handleTyping, isTyping ? typingDelay : erasingDelay);
 
     return () => window.clearTimeout(timeoutId);
   }, [displayText, isTyping, text, typingDelay, erasingDelay, pauseDelay]);

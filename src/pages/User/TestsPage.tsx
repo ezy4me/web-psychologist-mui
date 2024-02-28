@@ -8,13 +8,13 @@ import {
   Container,
   Stack,
   Typography,
-} from "@mui/material";
-import useTestStore from "../store/testStore";
-import { useEffect } from "react";
-import SectionTitle from "@components/SectionTitlle";
-import { Link, useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2";
-import { FaBrain, FaHouseUser, FaRegHandshake, FaBook } from "react-icons/fa6";
+} from '@mui/material';
+import useTestStore from '@store/testStore';
+import { useEffect } from 'react';
+import SectionTitle from '@components/SectionTitlle';
+import { Link, useNavigate } from 'react-router-dom';
+import Grid from '@mui/material/Unstable_Grid2';
+import { FaBrain, FaHouseUser, FaRegHandshake, FaBook } from 'react-icons/fa6';
 
 const TestsPage = () => {
   const navigate = useNavigate();
@@ -39,30 +39,30 @@ const TestsPage = () => {
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to={"/"}>Главная</Link>
-        <Link to={"/tests"}>Тесты</Link>
+        <Link to={'/'}>Главная</Link>
+        <Link to={'/tests'}>Тесты</Link>
       </Breadcrumbs>
-      <Stack direction={"column"} spacing={4} mt={4}>
+      <Stack direction={'column'} spacing={4} mt={4}>
         <SectionTitle text="Зачем проводить психологические тесты ?" />
         <Typography variant="body1">
-          Психологические тесты являются важным инструментом для изучения и
-          понимания различных аспектов человеческой психики, поведения и
-          личности. Они позволяют психологам и исследователям получить
-          информацию о личностных особенностях, эмоциональном состоянии,
-          склонностях и предпочтениях человека. Вот несколько причин, почему
-          психологические тесты имеют важное значение:
+          Психологические тесты являются важным инструментом для изучения и понимания различных
+          аспектов человеческой психики, поведения и личности. Они позволяют психологам и
+          исследователям получить информацию о личностных особенностях, эмоциональном состоянии,
+          склонностях и предпочтениях человека. Вот несколько причин, почему психологические тесты
+          имеют важное значение:
         </Typography>
         <Grid container spacing={2}>
           <Grid xs={12} sm={6} md={3}>
             <Card elevation={0}>
               <CardContent>
                 <Stack
-                  direction={"column"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  spacing={2}>
+                  direction={'column'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  spacing={2}
+                >
                   <FaHouseUser color="#4ba8ff" size={64} />
-                  <Typography textAlign={"center"} variant="h6">
+                  <Typography textAlign={'center'} variant="h6">
                     Оценка личностных характеристик
                   </Typography>
                 </Stack>
@@ -73,12 +73,13 @@ const TestsPage = () => {
             <Card elevation={0}>
               <CardContent>
                 <Stack
-                  direction={"column"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  spacing={2}>
+                  direction={'column'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  spacing={2}
+                >
                   <FaBrain color="#4ba8ff" size={64} />
-                  <Typography textAlign={"center"} variant="h6">
+                  <Typography textAlign={'center'} variant="h6">
                     Диагностика психологических состояний
                   </Typography>
                 </Stack>
@@ -89,12 +90,13 @@ const TestsPage = () => {
             <Card elevation={0}>
               <CardContent>
                 <Stack
-                  direction={"column"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  spacing={2}>
+                  direction={'column'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  spacing={2}
+                >
                   <FaBook color="#4ba8ff" size={64} />
-                  <Typography textAlign={"center"} variant="h6">
+                  <Typography textAlign={'center'} variant="h6">
                     Профессиональная ориентация
                   </Typography>
                 </Stack>
@@ -105,12 +107,13 @@ const TestsPage = () => {
             <Card elevation={0}>
               <CardContent>
                 <Stack
-                  direction={"column"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  spacing={2}>
+                  direction={'column'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  spacing={2}
+                >
                   <FaRegHandshake color="#4ba8ff" size={64} />
-                  <Typography textAlign={"center"} variant="h6">
+                  <Typography textAlign={'center'} variant="h6">
                     Развитие отношений
                   </Typography>
                 </Stack>
@@ -122,13 +125,10 @@ const TestsPage = () => {
           {tests?.map((test, index) => (
             <Grid xs={12} sm={6} md={4} key={index}>
               <Card
-                sx={{ cursor: "pointer", height: "100%" }}
-                onClick={() => handleOpenTestPassing(test.id)}>
-                <CardMedia
-                  sx={{ height: 180 }}
-                  image={test.image}
-                  title="green iguana"
-                />
+                sx={{ cursor: 'pointer', height: '100%' }}
+                onClick={() => handleOpenTestPassing(test.id)}
+              >
+                <CardMedia sx={{ height: 180 }} image={test.image} title="green iguana" />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {test.title}
@@ -138,11 +138,9 @@ const TestsPage = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Stack direction={'row'} spacing={2} alignItems={'center'}>
                     <Avatar src={test.psychologist.user.profile.image} />
-                    <Typography>
-                      {test.psychologist.user.profile.name}
-                    </Typography>
+                    <Typography>{test.psychologist.user.profile.name}</Typography>
                   </Stack>
                 </CardActions>
               </Card>

@@ -1,6 +1,6 @@
-import useArticleStore from "@store/articleStore";
-import ArticleDataGrid from "@components/Admin/DataGrids/ArticleDataGrid";
-import { useEffect } from "react";
+import useArticleStore from '@store/articleStore';
+import ArticleDataGrid from '@components/Admin/DataGrids/ArticleDataGrid';
+import { useEffect } from 'react';
 
 const ArticlePage = () => {
   const { articles, getArticles } = useArticleStore((state) => ({
@@ -16,7 +16,7 @@ const ArticlePage = () => {
   }, []);
   return (
     <>
-      <ArticleDataGrid data={articles}/>
+      <ArticleDataGrid data={articles} />
     </>
   );
 };
