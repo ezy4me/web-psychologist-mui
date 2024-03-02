@@ -1,8 +1,8 @@
 import useUserStore from '@store/userStore';
-import UserDataGrid from '@components/Admin/DataGrids/UserDataGrid';
+import UserDataGrid from '@components/DataGrids/UserDataGrid';
 import { useEffect } from 'react';
 
-const UserPage = () => {
+const AdminUserPage = () => {
   const { users, getUsers } = useUserStore((state) => ({
     users: state.users,
     getUsers: state.getUsers,
@@ -21,4 +21,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default AdminUserPage;

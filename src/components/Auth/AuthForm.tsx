@@ -35,9 +35,19 @@ const AuthForm = ({ closeModal }: AuthFormProps) => {
 
   useEffect(() => {
     if (accessToken) {
-      user.role.name === 'ADMIN' ? navigate('/admin') : navigate('/profile');
+      switch (user.role.name) {
+        case 'ADMIN':
+          navigate('/admin');
+          break;
+        case 'PSYCHOLOGIST':
+          navigate('/psychologist');
+          break;
+        default:
+          navigate('/profile');
+          break;
+      }
     }
-  }, [accessToken]);
+  }, [accessToken, user]);
 
   return (
     <Card sx={{ width: 320, boxShadow: 0, padding: 2 }}>

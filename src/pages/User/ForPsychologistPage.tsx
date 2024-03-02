@@ -2,8 +2,8 @@ import { Breadcrumbs, Card, CardContent, Container, Paper, Stack, Typography } f
 import TypingEffect from '@components/TypingEffect';
 import QAndA from '@components/Home/QandA';
 import Grid from '@mui/material/Unstable_Grid2';
-import { data } from '../../data/ForPsychologist.json';
-import SectionTitle from '../../components/SectionTitlle';
+import { data } from '@data/ForPsychologist.json';
+import SectionTitle from '@components/SectionTitlle';
 import { Link } from 'react-router-dom';
 import PsychologistSelection from '@components/Home/PsychologistSelection';
 

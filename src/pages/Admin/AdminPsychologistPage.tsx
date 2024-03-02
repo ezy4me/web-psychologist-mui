@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import usePsychologistStore from '@store/psychologistStore';
-import PsychologistDataGrid from '@components/Admin/DataGrids/PsychologistDataGrid';
+import PsychologistDataGrid from '@components/DataGrids/PsychologistDataGrid';
 
-const PsychologistPage = () => {
+const AdminPsychologistPage = () => {
   const { psychologists, getPsychologists } = usePsychologistStore((state) => ({
     psychologists: state.psychologists,
     getPsychologists: state.getPsychologists,
@@ -21,4 +21,4 @@ const PsychologistPage = () => {
   );
 };
 
-export default PsychologistPage;
+export default AdminPsychologistPage;

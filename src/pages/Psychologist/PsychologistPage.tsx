@@ -11,13 +11,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { MainNavLinks, SecondaryNavLinks } from '@components/Admin/NavList';
+import { MainNavLinks, SecondaryNavLinks } from '@components/Psychologist/NavList';
 import { Avatar, Stack } from '@mui/material';
 import Drawer from '@components/Dashboard/Drawer';
 import AppBar from '@components/Dashboard/AppBar';
 import { Outlet } from 'react-router-dom';
 
-const AdminPage = () => {
+const PsychologistPage = () => {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -47,7 +47,7 @@ const AdminPage = () => {
           <Stack direction={'row'} alignItems={'center'} spacing={1}>
             <Avatar alt="header_logo" src="/public/logo.png" sx={{ width: 40, height: 40 }} />
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              MindCare --- Администратор
+              MindCare --- Психолог
             </Typography>
           </Stack>
         </Toolbar>
@@ -91,4 +91,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default PsychologistPage;

@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 
-const AnalyticsPage = () => {
+const AdminAnalyticsPage = () => {
   return <Typography>Аналитика</Typography>;
 };
 
-export default AnalyticsPage;
+export default AdminAnalyticsPage;

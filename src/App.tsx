@@ -21,7 +21,7 @@ const Content = styled.div`
 const App = () => {
   const { user } = useAuthStore();
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
-  // const [isPsychologist, setIsPsychologist] = useState<boolean>(false);
+  const [isPsychologist, setIsPsychologist] = useState<boolean>(false);
 
   useEffect(() => {
     const checkRole = () => {
@@ -29,11 +29,11 @@ const App = () => {
         if (user.role.name === 'ADMIN') {
           setIsAdmin(true);
         } else if (user.role.name === 'PSYCHOLOGIST') {
-          // setIsPsychologist(true);
+          setIsPsychologist(true);
         }
       } else {
         setIsAdmin(false);
-        // setIsPsychologist(false);
+        setIsPsychologist(false);
       }
     };
     checkRole();
@@ -42,7 +42,7 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
-      {!isAdmin ? (
+      {!isAdmin && !isPsychologist ? (
         <>
           <Header />
           <Wrapper>

@@ -1,8 +1,8 @@
 import useTestStore from '@store/testStore';
-import TestDataGrid from '@components/Admin/DataGrids/TestDataGrid';
+import TestDataGrid from '@components/DataGrids/TestDataGrid';
 import { useEffect } from 'react';
 
-const TestPage = () => {
+const AdminTestPage = () => {
   const { tests, getTests } = useTestStore((state) => ({
     tests: state.tests,
     getTests: state.getTests,
@@ -21,4 +21,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default AdminTestPage;
