@@ -114,7 +114,11 @@ const ProfilePage = () => {
         <Grid container spacing={2} mt={2}>
           <Grid xs={12} sm={6}>
             <Card>
-              <CardMedia component="img" alt="Profile Image" src={image} />
+              <CardMedia
+                component="img"
+                alt="Profile Image"
+                src={image ? image : '/public/images/profile.png'}
+              />
               <CardContent>
                 <Stack direction={'column'} spacing={2}>
                   <Typography variant="h6">Личные данные</Typography>
