@@ -12,6 +12,7 @@ export default defineConfig({
       '@services': path.resolve(__dirname, 'src/services'),
       '@store': path.resolve(__dirname, 'src/store'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@layouts': path.resolve(__dirname, 'src/layouts'),
     },
   },
   plugins: [react()],

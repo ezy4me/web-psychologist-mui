@@ -13,9 +13,6 @@ export const ProfileService = {
 
   async updateUserProfile(profile: any) {
     try {
-
-      console.log(profile.birthday);
-      
       if (typeof profile.birthday === 'string') {
         const birthdayDate = new Date(profile.birthday);
 
